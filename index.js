@@ -6,10 +6,9 @@ await cr.launch();
 await cr.goto('https://www.e-gen.or.kr/egen/main.do');
 
 //페이지 찾아가기
-await cr.pagemove();
+await cr.move();
 
 //시구군 선택
-await cr.chioce();
 
 // const mainProcess = async () => {
 //   const cr = new Crawler('seoul', 'kangnam_gu')

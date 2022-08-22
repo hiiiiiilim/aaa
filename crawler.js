@@ -36,17 +36,18 @@ const Crawler = function() {
 
   //페이지선택
   //프라미스가 이행될때까지 기다리는 함수 async awaite 사용함 비동기방식
-  this.pagemove = async () => {
-  //await this.page.waitForSelector("#layoutContents > div.egen-main > div.egen-main-column1 > div:nth-child(2) > div > h4 > a");
-  await this.page.click("#layoutContents > div.egen-main > div.egen-main-column1 > div:nth-child(2) > div > h4 > a");
-  //await this.page.waitForSelector("#layoutContents > div.common-tabgroup.response-tabgroup-column2.mg_b20 > span:nth-child(2) > a");
-  await this.page.click("#layoutContents > div.common-tabgroup.response-tabgroup-column2.mg_b20 > span:nth-child(2) > a");
+  this.move = async () => {
+    await this.page.evaluate(() => {
+      const c1 = document.querySelector("#layoutContents > div.egen-main > div.egen-main-column1 > div:nth-child(2) > div > h4 > a");
+      c1.click();
+  })
+  await this.page.waitForSelector("#layoutContents > div.common-tabgroup.response-tabgroup-column2.mg_b20 > span.on > a")
+  await this.page.evaluate(() => {
+    const c2 = document.querySelector("#layoutContents > div.common-tabgroup.response-tabgroup-column2.mg_b20 > span:nth-child(2) > a");
+    c2.click();
+})
   }
 
-  //시군구 선택하는 함수
-  this.chioce = async () =>{
-    await this.page.querySelector("#generalSidoCode > option:nth-child(2)");
-  }
 
     
 }  
